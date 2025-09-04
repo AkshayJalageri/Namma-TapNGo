@@ -148,6 +148,7 @@ This project is configured for deployment on Render (backend) and Vercel (fronte
 NODE_ENV=production
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/namma-tapngo
 JWT_SECRET=your-super-secret-jwt-key-here
+QR_SECRET=your-qr-token-secret-key-here
 FRONTEND_URL=https://your-frontend.vercel.app
 ```
 

@@ -63,14 +63,24 @@ const GateSimulator = () => {
       setIsProcessing(false);
       setGateOpen(false);
       setScanResult(null);
+      setShowScanner(false);
     };
   }, [mode, selectedStation]);
+
+  // Reset scanner state when mode changes
+  useEffect(() => {
+    setShowScanner(false);
+    setIsProcessing(false);
+    setGateOpen(false);
+    setScanResult(null);
+  }, [mode]);
   
   // Handle QR scan
   const handleScan = async (data) => {
-    if (data && !isProcessing) {
+    if (data && !isProcessing && !scanResult) {
       setIsProcessing(true);
       setScanResult(data);
+      setShowScanner(false); // Close scanner immediately to prevent multiple scans
       
       try {
         // Process scan based on mode
@@ -81,8 +91,8 @@ const GateSimulator = () => {
         }
       } catch (error) {
         console.error('Scan processing error:', error);
+        setScanResult(null);
       } finally {
-        setShowScanner(false);
         setIsProcessing(false);
       }
     }
@@ -356,6 +366,7 @@ const GateSimulator = () => {
                     ×
                   </button>
                   <QrScanner
+                    key={`${mode}-${selectedStation}`}
                     onDecode={(result) => {
                       handleScan(result);
                     }}

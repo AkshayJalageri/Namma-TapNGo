@@ -34,6 +34,7 @@ In the Render dashboard, go to Environment and add:
 NODE_ENV=production
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/namma-tapngo
 JWT_SECRET=your-super-secret-jwt-key-here
+QR_SECRET=your-qr-token-secret-key-here
 FRONTEND_URL=https://your-frontend.vercel.app
 ```
 
@@ -128,6 +129,7 @@ After deployment, you can seed the database by:
 NODE_ENV=production
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/namma-tapngo
 JWT_SECRET=your-super-secret-jwt-key-here
+QR_SECRET=your-qr-token-secret-key-here
 FRONTEND_URL=https://your-frontend.vercel.app
 ```
 
