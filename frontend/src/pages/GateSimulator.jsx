@@ -16,6 +16,7 @@ const GateSimulator = () => {
   const [showScanner, setShowScanner] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [gateOpen, setGateOpen] = useState(false);
+  const [scannerKey, setScannerKey] = useState(0);
   const fileInputRef = useRef(null);
   
   // Fetch stations on component mount
@@ -73,6 +74,8 @@ const GateSimulator = () => {
     setIsProcessing(false);
     setGateOpen(false);
     setScanResult(null);
+    // Force scanner re-render by changing key
+    setScannerKey(prev => prev + 1);
   }, [mode]);
   
   // Handle QR scan
@@ -102,6 +105,17 @@ const GateSimulator = () => {
   const handleScanError = (err) => {
     toast.error('Error scanning QR code: ' + err);
     setShowScanner(false);
+  };
+
+  // Start scanning function
+  const startScanning = () => {
+    // Reset all states before starting scan
+    setScanResult(null);
+    setIsProcessing(false);
+    setGateOpen(false);
+    // Force scanner re-render
+    setScannerKey(prev => prev + 1);
+    setShowScanner(true);
   };
   
   // Process entry scan
@@ -307,7 +321,7 @@ const GateSimulator = () => {
               <div className="scan-buttons">
                 <button 
                   className="btn btn-primary"
-                  onClick={() => setShowScanner(true)}
+                  onClick={startScanning}
                   disabled={showScanner || gateOpen}
                 >
                   Scan with Camera
@@ -366,7 +380,7 @@ const GateSimulator = () => {
                     ×
                   </button>
                   <QrScanner
-                    key={`${mode}-${selectedStation}`}
+                    key={`${mode}-${selectedStation}-${scannerKey}`}
                     onDecode={(result) => {
                       handleScan(result);
                     }}
