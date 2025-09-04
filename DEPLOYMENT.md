@@ -55,6 +55,7 @@ Click "Create Web Service" and wait for deployment to complete. Note down the se
 3. Configure the project:
    - **Framework Preset**: Vite
    - **Root Directory**: `frontend`
+   - **Install Command**: `npm install`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
 

@@ -134,6 +134,9 @@ This project is configured for deployment on Render (backend) and Vercel (fronte
 2. **Import your project**:
    - Select the `frontend` folder as the root directory
    - Vercel will auto-detect it as a Vite project
+   - **Install Command**: `npm install`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
 3. **Set Environment Variables** in Vercel dashboard:
    - `VITE_API_URL`: Your Render backend URL (e.g., `https://your-backend.onrender.com/api`)
 4. **Deploy**: Vercel will automatically build and deploy your frontend
