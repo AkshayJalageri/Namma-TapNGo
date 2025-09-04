@@ -12,11 +12,28 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:5173',
-    'https://namma-tap-n-qxfdhcnwn-akshays-projects-e203747a.vercel.app',
-    'https://namma-tap-n-go.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Allow localhost for development
+    if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true);
+    }
+    
+    // Allow any Vercel deployment URL
+    if (origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Allow specific frontend URL if set
+    if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
+      return callback(null, true);
+    }
+    
+    // Allow the request
+    callback(null, true);
+  },
   credentials: true
 }));
 app.use(express.json());
