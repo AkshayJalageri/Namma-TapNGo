@@ -17,6 +17,7 @@ const GateSimulator = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [gateOpen, setGateOpen] = useState(false);
   const [scannerKey, setScannerKey] = useState(0);
+  const [scannerMounted, setScannerMounted] = useState(false);
   const fileInputRef = useRef(null);
   
   // Fetch stations on component mount
@@ -74,9 +75,21 @@ const GateSimulator = () => {
     setIsProcessing(false);
     setGateOpen(false);
     setScanResult(null);
+    setScannerMounted(false);
     // Force scanner re-render by changing key
     setScannerKey(prev => prev + 1);
+    
+    // Small delay to ensure complete unmounting
+    setTimeout(() => {
+      setScannerMounted(true);
+    }, 100);
   }, [mode]);
+
+  // Additional reset when component mounts or mode changes
+  useEffect(() => {
+    // Reset scanner state on component mount
+    setScannerMounted(true);
+  }, []);
   
   // Handle QR scan
   const handleScan = async (data) => {
@@ -105,17 +118,35 @@ const GateSimulator = () => {
   const handleScanError = (err) => {
     toast.error('Error scanning QR code: ' + err);
     setShowScanner(false);
+    setScannerMounted(false);
+  };
+
+  // Complete scanner reset function
+  const resetScanner = () => {
+    setShowScanner(false);
+    setIsProcessing(false);
+    setGateOpen(false);
+    setScanResult(null);
+    setScannerMounted(false);
+    setScannerKey(prev => prev + 1);
   };
 
   // Start scanning function
   const startScanning = () => {
-    // Reset all states before starting scan
-    setScanResult(null);
-    setIsProcessing(false);
-    setGateOpen(false);
-    // Force scanner re-render
+    console.log('Starting scan for mode:', mode);
+    
+    // Complete reset first
+    resetScanner();
+    
+    // Force scanner re-render with new key
     setScannerKey(prev => prev + 1);
-    setShowScanner(true);
+    
+    // Small delay to ensure complete reset and remount
+    setTimeout(() => {
+      console.log('Mounting scanner for mode:', mode);
+      setScannerMounted(true);
+      setShowScanner(true);
+    }, 200);
   };
   
   // Process entry scan
@@ -370,12 +401,15 @@ const GateSimulator = () => {
               )}
             </div>
             
-            {showScanner && (
+            {showScanner && scannerMounted && (
               <div className="qr-scanner-container">
                 <div className="qr-scanner-overlay">
                   <button 
                     className="close-scanner"
-                    onClick={() => setShowScanner(false)}
+                    onClick={() => {
+                      setShowScanner(false);
+                      setScannerMounted(false);
+                    }}
                   >
                     ×
                   </button>
