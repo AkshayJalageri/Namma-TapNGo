@@ -1,0 +1,283 @@
+.dashboard h1 {
+  margin-bottom: 1.5rem;
+  color: var(--metro-green);
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.qr-section {
+  background-color: var(--metro-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.qr-section h2 {
+  color: var(--metro-green);
+  margin-bottom: 0.5rem;
+}
+
+.qr-instruction {
+  color: var(--metro-dark-gray);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.qr-container {
+  background-color: var(--metro-white);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--metro-yellow);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.qr-code {
+  max-width: 200px;
+  height: auto;
+}
+
+.qr-placeholder {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--metro-light-gray);
+  color: var(--metro-dark-gray);
+  font-size: 0.9rem;
+}
+
+.qr-info {
+  color: var(--metro-dark-gray);
+  font-size: 0.9rem;
+}
+
+.qr-info p {
+  margin-bottom: 0.5rem;
+}
+
+.download-qr-btn {
+  margin-top: 1rem;
+  background-color: var(--metro-yellow);
+  color: var(--metro-dark-gray);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.download-qr-btn:hover {
+  background-color: var(--metro-green);
+  color: var(--metro-white);
+}
+
+.dashboard-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  background-color: var(--metro-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.info-card h3 {
+  color: var(--metro-green);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--metro-light-gray);
+  padding-bottom: 0.5rem;
+}
+
+.wallet-info .balance {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--metro-green);
+  margin-bottom: 1rem;
+}
+
+.instructions-list {
+  padding-left: 1.5rem;
+  margin-bottom: 0;
+}
+
+.instructions-list li {
+  margin-bottom: 0.5rem;
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.quick-actions .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Recent Trips Section */
+.recent-trips-card {
+  margin-top: 1rem;
+}
+
+.loading-trips {
+  text-align: center;
+  color: var(--metro-dark-gray);
+  padding: 1rem 0;
+}
+
+.no-trips {
+  text-align: center;
+  color: var(--metro-dark-gray);
+  padding: 1rem 0;
+}
+
+.recent-trips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recent-trip-item {
+  background-color: var(--metro-light-gray);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s ease;
+  border-left: 4px solid var(--metro-green);
+}
+
+.recent-trip-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.trip-stations-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.trip-station-entry,
+.trip-station-exit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.station-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.entry-dot {
+  background-color: var(--metro-green);
+}
+
+.exit-dot {
+  background-color: var(--metro-purple);
+}
+
+.exit-dot.in-progress {
+  background-color: var(--metro-yellow);
+}
+
+.station-name {
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.station-name.in-progress {
+  font-style: italic;
+  color: var(--metro-dark-gray);
+}
+
+.trip-time {
+  font-size: 0.8rem;
+  color: var(--metro-dark-gray);
+}
+
+.trip-details {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--metro-light-gray);
+}
+
+.trip-duration,
+.trip-fare {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  color: var(--metro-dark-gray);
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+.fare-amount {
+  color: var(--metro-green);
+}
+
+.trip-status {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.status-badge {
+  background-color: var(--metro-yellow);
+  color: var(--metro-dark-gray);
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.view-all-trips {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--metro-green);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.view-all-trips:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .qr-section {
+    order: 1;
+  }
+  
+  .dashboard-info {
+    order: 2;
+  }
+  
+  .trip-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

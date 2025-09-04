@@ -1,0 +1,1 @@
+SVGFake audio content - this is a placeholder since we can't actually create binary MP3 files directly. In a real implementation, you would need to add an actual MP3 file to the public directory.

@@ -1,0 +1,144 @@
+.trip-history-page h1 {
+  margin-bottom: 1.5rem;
+  color: var(--metro-green);
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.loading-spinner p {
+  margin-top: 1rem;
+  color: var(--metro-dark-gray);
+}
+
+.no-trips {
+  background-color: var(--metro-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  color: var(--metro-dark-gray);
+}
+
+.trips-container {
+  background-color: var(--metro-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.trips-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  padding: 1rem;
+  background-color: var(--metro-green);
+  color: var(--metro-white);
+  font-weight: 500;
+}
+
+.trip-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  padding: 1rem;
+  border-bottom: 1px solid var(--metro-light-gray);
+  transition: background-color 0.3s ease;
+}
+
+.trip-card:last-child {
+  border-bottom: none;
+}
+
+.trip-card:hover {
+  background-color: var(--metro-light-gray);
+}
+
+.trip-card.in-progress {
+  background-color: rgba(255, 214, 0, 0.1);
+}
+
+.trip-date {
+  font-size: 0.9rem;
+  color: var(--metro-dark-gray);
+}
+
+.trip-stations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.station {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.station-label {
+  font-size: 0.8rem;
+  color: var(--metro-dark-gray);
+  min-width: 40px;
+}
+
+.station-name {
+  font-weight: 500;
+}
+
+.entry-station .station-name {
+  color: var(--metro-green);
+}
+
+.exit-station .station-name {
+  color: var(--metro-black);
+}
+
+.exit-station.in-progress .station-name {
+  color: var(--metro-dark-gray);
+  font-style: italic;
+}
+
+.trip-duration {
+  font-weight: 500;
+}
+
+.trip-fare {
+  font-weight: 700;
+  color: var(--metro-green);
+}
+
+@media (max-width: 768px) {
+  .trips-header {
+    display: none;
+  }
+  
+  .trip-card {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .trip-date,
+  .trip-duration,
+  .trip-fare {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .trip-date::before {
+    content: 'Date:';
+    font-weight: 500;
+  }
+  
+  .trip-duration::before {
+    content: 'Duration:';
+    font-weight: 500;
+  }
+  
+  .trip-fare::before {
+    content: 'Fare:';
+    font-weight: 500;
+  }
+}
