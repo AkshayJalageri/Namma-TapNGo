@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: namma-tapngo-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: namma-tapngo-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://your-vercel-app.vercel.app
+
+databases:
+  - name: namma-tapngo-db
+    plan: free
