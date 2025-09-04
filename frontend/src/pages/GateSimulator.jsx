@@ -3,7 +3,7 @@ import { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import AuthContext from '../context/AuthContext';
-import { QrReader } from 'react-qr-reader';
+import { QrScanner } from '@yudiel/react-qr-scanner';
 import './GateSimulator.css';
 
 const GateSimulator = () => {
@@ -355,17 +355,14 @@ const GateSimulator = () => {
                   >
                     ×
                   </button>
-                  <QrReader
-                    constraints={{ facingMode: 'environment' }}
-                    onResult={(result, error) => {
-                      if (result) {
-                        handleScan(result?.text);
-                      }
-                      if (error) {
-                        handleScanError(error);
-                      }
+                  <QrScanner
+                    onDecode={(result) => {
+                      handleScan(result);
                     }}
-                    style={{ width: '100%' }}
+                    onError={(error) => {
+                      handleScanError(error);
+                    }}
+                    containerStyle={{ width: '100%' }}
                   />
                   <div className="scanner-instructions">
                     Position the QR code within the frame
