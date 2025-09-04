@@ -12,7 +12,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: [
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+    'https://namma-tap-n-qxfdhcnwn-akshays-projects-e203747a.vercel.app',
+    'https://namma-tap-n-go.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
